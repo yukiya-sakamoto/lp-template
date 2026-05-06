@@ -1,0 +1,137 @@
+{
+  "meta": {
+    "title": "院名 | サイト名",
+    "description": "整骨院の説明文（100文字程度）",
+    "siteUrl": "https://example.com"
+  },
+  "clinic": {
+    "name": "ひだまり整骨院",
+    "nameEn": "HIDAMARI SEIKOTSU-IN",
+    "branch": "正雀院",
+    "address": "大阪府摂津市正雀本町１丁目20-30",
+    "tel": "0663193339",
+    "telFormatted": "06-6319-3339",
+    "hours": [
+      { "label": "月〜金", "time": "9:00〜12:00 / 15:00〜20:00" },
+      { "label": "土曜",   "time": "9:00〜12:00（午後休）" },
+      { "label": "日・祝", "time": "休診" }
+    ],
+    "access": [
+      "阪急 正雀駅より徒歩4分",
+      "JR 岸辺駅より徒歩10分"
+    ],
+    "parking": "2台完備・駐車料金は当院が負担",
+    "insurance": "各種保険・交通事故・労災保険取扱",
+    "mapUrl": "https://maps.google.com/maps?q=大阪府摂津市正雀本町１丁目20-30"
+  },
+  "hero": {
+    "catchcopy": "痛みに、丁寧に向き合います。",
+    "subcopy": "摂津市正雀の地域密着型整骨院",
+    "lead": "交通事故・肩こり・腰痛・骨盤矯正まで。柔道整復師の資格を持つスタッフが、お一人おひとりに合わせた施術をご提供します。",
+    "image": "https://www.hidamari-syoujyaku.com/image/top/image.png"
+  },
+  "features": [
+    {
+      "num": "01",
+      "title": "交通事故専属サポート",
+      "desc": "自賠責保険の手続き・保険会社への連絡報告はすべて当院が代行。安心して治療に専念いただけます。"
+    },
+    {
+      "num": "02",
+      "title": "各種保険・労災対応",
+      "desc": "健康保険・各種保険・交通事故・労災保険に対応。初診3割負担で1,500円から受診可能です。"
+    },
+    {
+      "num": "03",
+      "title": "骨盤・背骨矯正",
+      "desc": "産後の骨盤矯正から慢性腰痛まで。ゆがみを根本から整え、再発を防ぐプログラムをご提供します。"
+    },
+    {
+      "num": "04",
+      "title": "予約不要・当日来院OK",
+      "desc": "お茶・コーヒーをご用意してお待ちしています。ちょっとした時間にもお気軽にご来院ください。"
+    }
+  ],
+  "about": {
+    "heading": "体の痛みを知っているから、丁寧に治せる。",
+    "body": [
+      "私がこの道に進むキッカケは、大学の柔道の練習で肩関節の脱臼という大怪我をしてしまい、納得のいく成績が残せなかったことが始まりです。",
+      "体の痛みを身をもって経験してきた私は、今度は逆に治す立場に立ち、治療家として一人でも多くの患者さんの痛いところが楽になるよう日々頑張っています。"
+    ],
+    "director": {
+      "name": "島村 康夫",
+      "role": "院長 / 柔道整復師",
+      "qualifications": ["柔道五段・C級審判員", "専科教員（柔道整復師・保健体育）"],
+      "hobbies": ["温泉", "ドライブ", "居酒屋めぐり"],
+      "image": "https://www.hidamari-syoujyaku.com/image/about-item/shimamura.jpg"
+    },
+    "infoCards": [
+      { "title": "各種保険取扱", "desc": "健康保険・労災・交通事故" },
+      { "title": "予約不要",     "desc": "当日来院・飛び込みOK" },
+      { "title": "駐車場完備",   "desc": "2台・料金当院負担" },
+      { "title": "丁寧な説明",   "desc": "施術後にプランをご説明" }
+    ]
+  },
+  "symptoms": [
+    {
+      "slug": "katakori",
+      "name": "肩こり",
+      "nameEn": "Stiff Shoulders",
+      "desc": "頭痛・首の痛みも改善",
+      "lead": "肩こりは放置すると頭痛・めまい・手のしびれなど全身に影響します。",
+      "treatment": "干渉波電気治療・骨格矯正・オリジナルマッサージを組み合わせた治療を行います。",
+      "image": "https://www.hidamari-syoujyaku.com/image/menu-item/katakori1.jpg",
+      "videos": ["A_Etwx12Rd0", "Qa-eS5Zk1Yc"],
+      "cases": [
+        {
+          "who": "Iさん・80代女性",
+          "text": "週2〜3回通って治療を受けた結果、姿勢が良くなり体が動くようになりました。"
+        }
+      ]
+    }
+  ],
+  "flow": [
+    { "n": "01", "title": "受付",       "desc": "元気なあいさつと笑顔でお迎えします。", "image": "https://www.hidamari-syoujyaku.com/image/about-item/flow1.png" },
+    { "n": "02", "title": "お待ちの間に", "desc": "お茶・コーヒーをご用意しています。", "image": "https://www.hidamari-syoujyaku.com/image/about-item/flow2.png" },
+    { "n": "03", "title": "問診・診察",  "desc": "プロのスタッフが痛みの原因を丁寧に追究します。", "image": "https://www.hidamari-syoujyaku.com/image/about-item/flow3.png" },
+    { "n": "04", "title": "施術",       "desc": "手技治療と電気治療を組み合わせて施術します。", "image": "https://www.hidamari-syoujyaku.com/image/about-item/flow4.png" },
+    { "n": "05", "title": "施術終了",    "desc": "今後の治療プランをご説明して終了です。", "image": "https://www.hidamari-syoujyaku.com/image/about-item/flow5.png" }
+  ],
+  "voices": [
+    {
+      "tag": "腰痛・肩こり",
+      "title": "30年の腰痛がほぼ消えた",
+      "text": "30年のトラック運転手生活で肩・腰の痛みが強く、3回目の治療でほとんど痛みはなくなり本当に感謝しています。",
+      "who": "Hさん・男性・57歳"
+    }
+  ],
+  "staff": [
+    {
+      "name": "樫本 真一",
+      "profile": "A型・愛媛県出身・平成医療学園卒業",
+      "message": "技術においても接客においても地域No.1を目指しております。",
+      "image": "https://www.hidamari-syoujyaku.com/image/about-item/staff8.jpg"
+    }
+  ],
+  "pricing": {
+    "insurance": [
+      { "label": "初診", "col1": "1,500円", "col2": "500円" },
+      { "label": "再診", "col1": "680円",   "col2": "200円" }
+    ],
+    "extras": [
+      { "label": "各種骨格矯正",     "price": "100円〜" },
+      { "label": "マッサージジェル", "price": "50円〜" },
+      { "label": "湿布",             "price": "50円〜" }
+    ],
+    "insuranceTypes": [
+      { "title": "健康保険", "desc": "各種健康保険に対応しています" },
+      { "title": "交通事故", "desc": "自賠責保険・手続き代行あり" },
+      { "title": "労災保険", "desc": "労働災害による傷害に対応" }
+    ]
+  },
+  "images": {
+    "exterior": "https://www.hidamari-syoujyaku.com/image/about-item/access_p.png",
+    "interior":  "https://www.hidamari-syoujyaku.com/image/about-item/in.jpg",
+    "parking":   "https://www.hidamari-syoujyaku.com/image/about-item/parking.png"
+  }
+}
