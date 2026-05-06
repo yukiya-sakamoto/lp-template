@@ -9,15 +9,13 @@ import Staff from "../components/Staff";
 import Pricing from "../components/Pricing";
 import Access from "../components/Access";
 import Footer from "../components/Footer";
-import content from "../content.json";
-import type { SiteContent } from "../lib/content";
-
-const c = content as SiteContent;
+import { siteContent as c } from "../lib/content";
+import { DEFAULT_NAV } from "../lib/nav";
 
 export default function HomePage() {
   return (
     <>
-      <Header clinic={c.clinic} nav={defaultNav} />
+      <Header clinic={c.clinic} nav={[...DEFAULT_NAV]} />
       <Hero hero={c.hero} clinic={c.clinic} />
       <Features features={c.features} />
       <About about={c.about} />
@@ -27,17 +25,7 @@ export default function HomePage() {
       <Staff staff={c.staff} />
       <Pricing pricing={c.pricing} />
       <Access clinic={c.clinic} images={c.images} />
-      <Footer clinic={c.clinic} symptoms={c.symptoms} nav={defaultNav} />
+      <Footer clinic={c.clinic} symptoms={c.symptoms} nav={[...DEFAULT_NAV]} />
     </>
   );
 }
-
-const defaultNav = [
-  { label: "院長ご挨拶", href: "/#about" },
-  { label: "症状・施術", href: "/symptoms/" },
-  { label: "施術の流れ", href: "/flow/" },
-  { label: "患者様の声", href: "/#voice" },
-  { label: "スタッフ",   href: "/staff/" },
-  { label: "料金",       href: "/pricing/" },
-  { label: "アクセス",   href: "/access/" },
-];

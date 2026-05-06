@@ -1,38 +1,29 @@
+import { notFound } from "next/navigation";
 import Header from "../../../components/Header";
 import Footer from "../../../components/Footer";
 import PageHero from "../../../components/PageHero";
 import Link from "next/link";
-import content from "../../../content.json";
-import type { SiteContent } from "../../../lib/content";
-
-const c = content as SiteContent;
-
-const defaultNav = [
-  { label: "院長ご挨拶", href: "/#about" },
-  { label: "症状・施術", href: "/symptoms/" },
-  { label: "施術の流れ", href: "/flow/" },
-  { label: "患者様の声", href: "/#voice" },
-  { label: "スタッフ",   href: "/staff/" },
-  { label: "料金",       href: "/pricing/" },
-  { label: "アクセス",   href: "/access/" },
-];
+import { siteContent as c } from "../../../lib/content";
+import { DEFAULT_NAV } from "../../../lib/nav";
 
 export function generateStaticParams() {
   return c.symptoms.map(s => ({ slug: s.slug }));
 }
 
-export function generateMetadata({ params }: { params: { slug: string } }) {
-  const s = c.symptoms.find(s => s.slug === params.slug);
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const s = c.symptoms.find(s => s.slug === slug);
   return { title: `${s?.name} | 症状・施術 | ${c.meta.title}` };
 }
 
-export default function SymptomPage({ params }: { params: { slug: string } }) {
-  const s = c.symptoms.find(s => s.slug === params.slug);
-  if (!s) return null;
+export default async function SymptomPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const s = c.symptoms.find(s => s.slug === slug);
+  if (!s) notFound();
 
   return (
     <>
-      <Header clinic={c.clinic} nav={defaultNav} />
+      <Header clinic={c.clinic} nav={[...DEFAULT_NAV]} />
       <PageHero
         label={s.nameEn.toUpperCase()}
         title={s.name}
@@ -52,8 +43,8 @@ export default function SymptomPage({ params }: { params: { slug: string } }) {
               <span className="sec-label">概要</span>
               <h2 style={{ fontSize: "clamp(18px, 2.4vw, 26px)", fontWeight: 700, color: "#2D2D2D", marginBottom: 20, lineHeight: 1.5 }}>{s.name}について</h2>
               <p style={{ fontSize: 15, color: "#4A4A4A", lineHeight: 2.2, marginBottom: 24 }}>{s.lead}</p>
-              <div style={{ backgroundColor: "#EAF7F1", border: "1px solid #A8E0C4", borderRadius: 10, padding: "20px 24px" }}>
-                <div style={{ fontSize: 12, color: "#05AF4B", fontWeight: 700, marginBottom: 10, letterSpacing: "0.06em" }}>当院の施術方針</div>
+              <div style={{ backgroundColor: "var(--color-green-light)", border: "1px solid var(--color-green-border)", borderRadius: 10, padding: "20px 24px" }}>
+                <div style={{ fontSize: 12, color: "var(--color-green)", fontWeight: 700, marginBottom: 10, letterSpacing: "0.06em" }}>当院の施術方針</div>
                 <p style={{ fontSize: 15, color: "#2D2D2D", lineHeight: 2.0 }}>{s.treatment}</p>
               </div>
             </div>
@@ -90,10 +81,10 @@ export default function SymptomPage({ params }: { params: { slug: string } }) {
               <span className="sec-label">患者様の声</span>
               <h2 style={{ fontSize: "clamp(18px, 2.4vw, 26px)", fontWeight: 700, color: "#2D2D2D", marginBottom: 28, lineHeight: 1.5 }}>来院された方のお声</h2>
               <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16 }} className="grid-3">
-                {s.cases.map((c, i) => (
-                  <div key={i} style={{ backgroundColor: "#fff", border: "1px solid #EDE0CC", borderRadius: 10, padding: "24px 20px" }}>
-                    <p style={{ fontSize: 14, color: "#4A4A4A", lineHeight: 2.1, marginBottom: 16 }}>{c.text}</p>
-                    <div style={{ fontSize: 13, color: "#05AF4B", fontWeight: 700, borderTop: "1px solid #EDE0CC", paddingTop: 12 }}>{c.who}</div>
+                {s.cases.map((cs, i) => (
+                  <div key={i} style={{ backgroundColor: "#fff", border: "1px solid var(--color-border)", borderRadius: 10, padding: "24px 20px" }}>
+                    <p style={{ fontSize: 14, color: "#4A4A4A", lineHeight: 2.1, marginBottom: 16 }}>{cs.text}</p>
+                    <div style={{ fontSize: 13, color: "var(--color-green)", fontWeight: 700, borderTop: "1px solid var(--color-border)", paddingTop: 12 }}>{cs.who}</div>
                   </div>
                 ))}
               </div>
@@ -101,30 +92,30 @@ export default function SymptomPage({ params }: { params: { slug: string } }) {
           )}
 
           {/* CTA */}
-          <div style={{ backgroundColor: "#FEF3E8", border: "1px solid #F5DCC2", borderRadius: 10, padding: "36px 32px", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 20 }}>
+          <div style={{ backgroundColor: "var(--color-primary-light)", border: "1px solid var(--color-primary-border)", borderRadius: 10, padding: "36px 32px", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 20 }}>
             <div>
-              <div style={{ fontSize: 12, color: "#05AF4B", fontWeight: 700, marginBottom: 6 }}>予約不要・当日来院OK</div>
+              <div style={{ fontSize: 12, color: "var(--color-green)", fontWeight: 700, marginBottom: 6 }}>予約不要・当日来院OK</div>
               <div style={{ fontSize: 18, fontWeight: 700, color: "#2D2D2D" }}>お気軽にご来院ください</div>
             </div>
             <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-              <a href={`tel:${c.clinic.tel}`} style={{ display: "inline-flex", alignItems: "center", gap: 8, backgroundColor: "#D96B0B", color: "#fff", padding: "14px 28px", borderRadius: 6, textDecoration: "none", fontSize: 16, fontWeight: 700 }}>
+              <a href={`tel:${c.clinic.tel}`} style={{ display: "inline-flex", alignItems: "center", gap: 8, backgroundColor: "var(--color-primary)", color: "#fff", padding: "14px 28px", borderRadius: 6, textDecoration: "none", fontSize: 16, fontWeight: 700 }}>
                 {c.clinic.telFormatted}
               </a>
-              <Link href="/access/" style={{ display: "inline-flex", alignItems: "center", gap: 8, border: "1.5px solid #EDE0CC", color: "#4A4A4A", padding: "13px 22px", borderRadius: 6, textDecoration: "none", fontSize: 14, fontWeight: 600, backgroundColor: "#fff" }}>
+              <Link href="/access/" style={{ display: "inline-flex", alignItems: "center", gap: 8, border: "1.5px solid var(--color-border)", color: "#4A4A4A", padding: "13px 22px", borderRadius: 6, textDecoration: "none", fontSize: 14, fontWeight: 600, backgroundColor: "#fff" }}>
                 アクセスを見る
               </Link>
             </div>
           </div>
 
           <div style={{ marginTop: 28 }}>
-            <Link href="/symptoms/" style={{ fontSize: 14, color: "#D96B0B", textDecoration: "none", fontWeight: 600 }}>
+            <Link href="/symptoms/" style={{ fontSize: 14, color: "var(--color-primary)", textDecoration: "none", fontWeight: 600 }}>
               ← 症状・施術一覧に戻る
             </Link>
           </div>
         </div>
       </main>
 
-      <Footer clinic={c.clinic} symptoms={c.symptoms} nav={defaultNav} />
+      <Footer clinic={c.clinic} symptoms={c.symptoms} nav={[...DEFAULT_NAV]} />
     </>
   );
 }

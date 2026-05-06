@@ -1,11 +1,11 @@
-"use client";
 import Link from "next/link";
 import type { SiteContent } from "../lib/content";
+import type { NavItem } from "../lib/nav";
 
 interface Props {
   clinic: SiteContent["clinic"];
   symptoms: SiteContent["symptoms"];
-  nav: { label: string; href: string }[];
+  nav: NavItem[];
 }
 
 export default function Footer({ clinic, symptoms, nav }: Props) {
@@ -16,38 +16,30 @@ export default function Footer({ clinic, symptoms, nav }: Props) {
         <div style={{ display: "grid", gridTemplateColumns: "1.4fr 1fr 1fr 1fr", gap: 32, marginBottom: 40, paddingBottom: 40, borderBottom: "1px solid rgba(255,255,255,0.08)" }} className="footer-grid">
           <div>
             <div style={{ fontSize: 17, fontWeight: 700, color: "#fff", marginBottom: 2 }}>
-              {clinic.name}<span style={{ color: "#D96B0B", marginLeft: 6 }}>{clinic.branch}</span>
+              {clinic.name}<span style={{ color: "var(--color-primary)", marginLeft: 6 }}>{clinic.branch}</span>
             </div>
             <div style={{ fontSize: 11, color: "rgba(255,255,255,0.28)", marginBottom: 18 }}>{clinic.nameEn}</div>
             <div style={{ fontSize: 13, color: "rgba(255,255,255,0.48)", marginBottom: 16, lineHeight: 2.1 }}>
               {clinic.address}<br />
               {clinic.access.join(" / ")}
             </div>
-            <a href={`tel:${clinic.tel}`} style={{ display: "block", fontSize: 22, fontWeight: 700, color: "#D96B0B", textDecoration: "none", marginBottom: 4 }}>{clinic.telFormatted}</a>
+            <a href={`tel:${clinic.tel}`} style={{ display: "block", fontSize: 22, fontWeight: 700, color: "var(--color-primary)", textDecoration: "none", marginBottom: 4 }}>{clinic.telFormatted}</a>
             <div style={{ fontSize: 12, color: "rgba(255,255,255,0.3)" }}>{clinic.insurance}</div>
           </div>
           <div>
-            <div style={{ fontSize: 10, color: "#05AF4B", fontWeight: 700, letterSpacing: "0.16em", marginBottom: 16, paddingBottom: 10, borderBottom: "1px solid rgba(255,255,255,0.08)" }}>MENU</div>
-            {nav.map(([label, href]) => (
-              <Link key={label} href={href} style={{ display: "block", fontSize: 13, color: "rgba(255,255,255,0.45)", textDecoration: "none", marginBottom: 11 }}
-                onMouseEnter={e => (e.currentTarget as HTMLElement).style.color = "#D96B0B"}
-                onMouseLeave={e => (e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.45)"}>
-                {label}
-              </Link>
+            <div style={{ fontSize: 10, color: "var(--color-green)", fontWeight: 700, letterSpacing: "0.16em", marginBottom: 16, paddingBottom: 10, borderBottom: "1px solid rgba(255,255,255,0.08)" }}>MENU</div>
+            {nav.map(({ label, href }) => (
+              <Link key={label} href={href} className="footer-link">{label}</Link>
             ))}
           </div>
           <div>
-            <div style={{ fontSize: 10, color: "#05AF4B", fontWeight: 700, letterSpacing: "0.16em", marginBottom: 16, paddingBottom: 10, borderBottom: "1px solid rgba(255,255,255,0.08)" }}>症状別</div>
+            <div style={{ fontSize: 10, color: "var(--color-green)", fontWeight: 700, letterSpacing: "0.16em", marginBottom: 16, paddingBottom: 10, borderBottom: "1px solid rgba(255,255,255,0.08)" }}>症状別</div>
             {symptomLinks.map(s => (
-              <Link key={s.slug} href={`/symptoms/${s.slug}/`} style={{ display: "block", fontSize: 13, color: "rgba(255,255,255,0.45)", textDecoration: "none", marginBottom: 11 }}
-                onMouseEnter={e => (e.currentTarget as HTMLElement).style.color = "#D96B0B"}
-                onMouseLeave={e => (e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.45)"}>
-                {s.name}
-              </Link>
+              <Link key={s.slug} href={`/symptoms/${s.slug}/`} className="footer-link">{s.name}</Link>
             ))}
           </div>
           <div>
-            <div style={{ fontSize: 10, color: "#05AF4B", fontWeight: 700, letterSpacing: "0.16em", marginBottom: 16, paddingBottom: 10, borderBottom: "1px solid rgba(255,255,255,0.08)" }}>HOURS</div>
+            <div style={{ fontSize: 10, color: "var(--color-green)", fontWeight: 700, letterSpacing: "0.16em", marginBottom: 16, paddingBottom: 10, borderBottom: "1px solid rgba(255,255,255,0.08)" }}>HOURS</div>
             <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
               {clinic.hours.map(h => (
                 <div key={h.label}>

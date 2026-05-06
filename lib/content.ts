@@ -81,7 +81,8 @@ export interface SiteContent {
   };
 }
 
-export async function loadContent(): Promise<SiteContent> {
-  const data = await import("../content.json");
-  return data.default as SiteContent;
-}
+// content.json は .gitignore 対象でクライアントごとに用意する。
+// キャストは build 時に型チェックが走るこの 1 箇所のみに集約する。
+// より厳密にするなら zod で parse するとよい: z.object({...}).parse(rawContent)
+// eslint-disable-next-line @typescript-eslint/no-require-imports
+export const siteContent: SiteContent = require("../content.json");

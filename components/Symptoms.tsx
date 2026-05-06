@@ -1,4 +1,3 @@
-"use client";
 import Link from "next/link";
 import type { SiteContent } from "../lib/content";
 
@@ -15,18 +14,15 @@ export default function Symptoms({ symptoms }: Props) {
             <span className="sec-label">症状・施術メニュー</span>
             <h2 style={{ fontSize: "clamp(20px, 2.6vw, 28px)", fontWeight: 700, color: "#2D2D2D" }}>こんなお悩みに対応しています</h2>
           </div>
-          <Link href="/symptoms/" style={{ fontSize: 14, color: "#D96B0B", fontWeight: 700, textDecoration: "none" }}>すべての症状を見る →</Link>
+          <Link href="/symptoms/" style={{ fontSize: 14, color: "var(--color-primary)", fontWeight: 700, textDecoration: "none" }}>すべての症状を見る →</Link>
         </div>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16 }} className="grid-3">
           {symptoms.map(s => (
-            <Link key={s.slug} href={`/symptoms/${s.slug}/`}
-              style={{ backgroundColor: "#fff", border: "1px solid #EDE0CC", borderRadius: 10, padding: "22px 20px", textDecoration: "none", display: "block" }}
-              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.boxShadow = "0 4px 16px rgba(217,107,11,0.12)"; (e.currentTarget as HTMLElement).style.borderColor = "#F5DCC2"; }}
-              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.boxShadow = "none"; (e.currentTarget as HTMLElement).style.borderColor = "#EDE0CC"; }}>
-              <div style={{ width: 24, height: 3, backgroundColor: "#05AF4B", borderRadius: 2, marginBottom: 12 }} />
+            <Link key={s.slug} href={`/symptoms/${s.slug}/`} className="symptom-card">
+              <div style={{ width: 24, height: 3, backgroundColor: "var(--color-green)", borderRadius: 2, marginBottom: 12 }} />
               <div style={{ fontSize: 15, fontWeight: 700, color: "#2D2D2D", marginBottom: 6 }}>{s.name}</div>
               <div style={{ fontSize: 13, color: "#666259", lineHeight: 1.8, marginBottom: 14 }}>{s.desc}</div>
-              <div style={{ fontSize: 13, color: "#D96B0B", fontWeight: 700 }}>詳しく見る →</div>
+              <div style={{ fontSize: 13, color: "var(--color-primary)", fontWeight: 700 }}>詳しく見る →</div>
             </Link>
           ))}
         </div>

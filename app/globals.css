@@ -3,34 +3,88 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 
+:root {
+  --color-primary:        #D96B0B;
+  --color-primary-dark:   #B85808;
+  --color-primary-light:  #FEF3E8;
+  --color-primary-border: #F5DCC2;
+  --color-green:          #05AF4B;
+  --color-green-light:    #EAF7F1;
+  --color-green-border:   #A8E0C4;
+  --color-cream:          #FDFAF6;
+  --color-warm:           #F7F0E6;
+  --color-border:         #EDE0CC;
+  --color-text:           #2D2D2D;
+  --color-text-body:      #4A4A4A;
+  --color-text-light:     #888888;
+  --color-footer-bg:      #2A1F18;
+}
+
 body {
-  background: #FDFAF6;
-  color: #2D2D2D;
+  background: var(--color-cream);
+  color: var(--color-text);
   font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Noto Sans JP", sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 
-/*
-  Color tokens:
-  Orange primary:   #D96B0B
-  Orange dark:      #B85808
-  Orange light bg:  #FEF3E8
-  Orange border:    #F5DCC2
-  Green accent:     #05AF4B
-  Green light bg:   #EAF7F1
-  Green border:     #A8E0C4
-  Cream bg:         #FDFAF6  (main warm off-white)
-  Warm bg:          #F7F0E6
-  Text dark:        #2D2D2D
-  Text body:        #4A4A4A
-  Text light:       #888888
-  Border warm:      #EDE0CC
-*/
+/* ---- Hover utilities (Server Component 対応・onMouseEnter 不要) ---- */
+
+.nav-link {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-text);
+  text-decoration: none;
+  white-space: nowrap;
+  border-bottom: 2px solid transparent;
+  transition: color 0.15s, border-color 0.15s;
+}
+.nav-link:hover {
+  color: var(--color-primary);
+  border-bottom-color: var(--color-primary);
+}
+
+.footer-link {
+  display: block;
+  font-size: 13px;
+  color: rgba(255,255,255,0.45);
+  text-decoration: none;
+  margin-bottom: 11px;
+  transition: color 0.15s;
+}
+.footer-link:hover {
+  color: var(--color-primary);
+}
+
+.symptom-card {
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  padding: 22px 20px;
+  text-decoration: none;
+  display: block;
+  transition: box-shadow 0.15s, border-color 0.15s;
+}
+.symptom-card:hover {
+  box-shadow: 0 4px 16px rgba(217,107,11,0.12);
+  border-color: var(--color-primary-border);
+}
+
+.breadcrumb-link {
+  font-size: 12px;
+  color: var(--color-text-light);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.breadcrumb-link:hover {
+  color: var(--color-primary);
+}
+
+/* ---- Common ---- */
 
 .sec-label {
   font-size: 11px;
   font-weight: 700;
-  color: #D96B0B;
+  color: var(--color-primary);
   letter-spacing: 0.2em;
   margin-bottom: 6px;
   display: block;
@@ -48,7 +102,7 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: #D96B0B;
+  background: var(--color-primary);
   color: #fff;
   padding: 15px 32px;
   border-radius: 6px;
@@ -63,27 +117,16 @@ body {
   align-items: center;
   gap: 8px;
   background: transparent;
-  color: #D96B0B;
+  color: var(--color-primary);
   padding: 13px 28px;
   border-radius: 6px;
-  border: 1.5px solid #D96B0B;
+  border: 1.5px solid var(--color-primary);
   text-decoration: none;
   font-size: 14px;
   font-weight: 700;
 }
 
-.btn-green {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: #05AF4B;
-  color: #fff;
-  padding: 14px 28px;
-  border-radius: 6px;
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: 700;
-}
+/* ---- Grids ---- */
 
 .grid-2      { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
 .grid-3      { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
