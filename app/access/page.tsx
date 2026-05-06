@@ -6,7 +6,18 @@ import { DEFAULT_NAV } from "../../lib/nav";
 
 export const metadata = { title: `アクセス | ${c.meta.title}` };
 
+function buildEmbedSrc(mapUrl: string): string {
+  try {
+    const u = new URL(mapUrl);
+    u.searchParams.set("output", "embed");
+    return u.toString();
+  } catch {
+    return "";
+  }
+}
+
 export default function AccessPage() {
+  const embedSrc = buildEmbedSrc(c.clinic.mapUrl);
   return (
     <>
       <Header clinic={c.clinic} nav={[...DEFAULT_NAV]} />
@@ -81,7 +92,7 @@ export default function AccessPage() {
           {/* マップ埋め込み枠 */}
           <div style={{ marginTop: 56, borderRadius: 10, overflow: "hidden", boxShadow: "0 4px 16px rgba(0,0,0,0.08)", aspectRatio: "16 / 5" }}>
             <iframe
-              src={c.clinic.mapUrl.replace("/maps/place/", "/maps/embed?q=").replace(/\/.*$/, "")}
+              src={embedSrc}
               width="100%"
               height="100%"
               style={{ border: "none", display: "block" }}

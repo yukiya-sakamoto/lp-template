@@ -82,7 +82,9 @@ export interface SiteContent {
 }
 
 // content.json は .gitignore 対象でクライアントごとに用意する。
-// キャストは build 時に型チェックが走るこの 1 箇所のみに集約する。
-// より厳密にするなら zod で parse するとよい: z.object({...}).parse(rawContent)
+// require() は any を返すため TypeScript は構造を検証しない。
+// unknown 経由の明示キャストにすることで「意図的な信頼」を一箇所に集約する。
+// 厳密な検証が必要な場合は zod を追加: z.object({...}).parse(raw)
 // eslint-disable-next-line @typescript-eslint/no-require-imports
-export const siteContent: SiteContent = require("../content.json");
+const _raw: unknown = require("../content.json");
+export const siteContent = _raw as SiteContent;

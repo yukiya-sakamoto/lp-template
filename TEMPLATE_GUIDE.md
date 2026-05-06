@@ -83,7 +83,7 @@ git push
 | Warm bg           | セクション交互背景           | `#F7F0E6`   |
 | Border warm       | カード・セパレーター         | `#EDE0CC`   |
 
-別の院のカラーに変える場合は `globals.css` の変数と、各コンポーネントのインラインスタイルを一括 sed 置換。
+別の院のカラーに変える場合は `app/globals.css` の `:root` ブロックにある CSS 変数を変更するだけで全体に反映されます。
 
 ---
 
@@ -126,7 +126,7 @@ git push
 
 ## よくある調整
 
-- **配色変更**: `globals.css` + 各コンポーネントの `#D96B0B` を sed で一括置換
+- **配色変更**: `app/globals.css` の `:root` ブロックの CSS 変数を変更（コンポーネントは `var(--color-primary)` 等で参照しているため個別編集不要）
 - **症状ページ追加**: `content.json` の `symptoms` 配列にエントリ追加 → 自動でページ生成
 - **セクション削除**: `app/page.tsx` から該当コンポーネントを削除
 - **フォント変更**: `globals.css` の `font-family` を変更
