@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import content from "../content.json";
+import { siteContent } from "../lib/content";
 
 export const metadata: Metadata = {
-  title: content.meta.title,
-  description: content.meta.description,
+  title: siteContent.meta.title,
+  description: siteContent.meta.description,
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
