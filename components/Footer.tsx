@@ -11,7 +11,7 @@ interface Props {
 export default function Footer({ clinic, symptoms, nav }: Props) {
   const symptomLinks = symptoms.slice(0, 6);
   return (
-    <footer style={{ backgroundColor: "#2A1F18", padding: "56px 28px 28px" }}>
+    <footer style={{ backgroundColor: "var(--color-footer-bg)", padding: "56px 28px 28px" }}>
       <div style={{ maxWidth: 1280, margin: "0 auto" }}>
         <div style={{ display: "grid", gridTemplateColumns: "1.4fr 1fr 1fr 1fr", gap: 32, marginBottom: 40, paddingBottom: 40, borderBottom: "1px solid rgba(255,255,255,0.08)" }} className="footer-grid">
           <div>

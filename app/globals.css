@@ -17,6 +17,8 @@ html { scroll-behavior: smooth; }
   --color-text:           #2D2D2D;
   --color-text-body:      #4A4A4A;
   --color-text-light:     #888888;
+  --color-text-muted:     #666259;
+  --color-sep:            #C8B8A2;
   --color-footer-bg:      #2A1F18;
 }
 

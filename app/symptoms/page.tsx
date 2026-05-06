@@ -20,10 +20,10 @@ export default function SymptomsPage() {
         ]}
       />
 
-      <main style={{ backgroundColor: "#FDFAF6", padding: "80px 28px" }}>
+      <main style={{ backgroundColor: "var(--color-cream)", padding: "80px 28px" }}>
         <div style={{ maxWidth: 1280, margin: "0 auto" }}>
           <span className="sec-label">施術メニュー</span>
-          <h2 style={{ fontSize: "clamp(18px, 2.4vw, 26px)", fontWeight: 700, color: "#2D2D2D", marginBottom: 40, lineHeight: 1.5 }}>こんなお悩みに対応しています</h2>
+          <h2 style={{ fontSize: "clamp(18px, 2.4vw, 26px)", fontWeight: 700, color: "var(--color-text)", marginBottom: 40, lineHeight: 1.5 }}>こんなお悩みに対応しています</h2>
 
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20 }} className="grid-3">
             {c.symptoms.map(s => (
@@ -32,8 +32,8 @@ export default function SymptomsPage() {
                   <img src={s.image} alt={s.name} style={{ width: "100%", height: "auto", display: "block" }} />
                 </div>
                 <div style={{ width: 24, height: 3, backgroundColor: "var(--color-green)", borderRadius: 2, marginBottom: 10 }} />
-                <div style={{ fontSize: 15, fontWeight: 700, color: "#2D2D2D", marginBottom: 8 }}>{s.name}</div>
-                <p style={{ fontSize: 13, color: "#666259", lineHeight: 1.85, marginBottom: 14 }}>{s.desc}</p>
+                <div style={{ fontSize: 15, fontWeight: 700, color: "var(--color-text)", marginBottom: 8 }}>{s.name}</div>
+                <p style={{ fontSize: 13, color: "var(--color-text-muted)", lineHeight: 1.85, marginBottom: 14 }}>{s.desc}</p>
                 <div style={{ fontSize: 13, color: "var(--color-primary)", fontWeight: 700 }}>詳しく見る →</div>
               </Link>
             ))}

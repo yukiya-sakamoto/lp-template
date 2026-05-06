@@ -19,10 +19,10 @@ export default function StaffPage() {
         ]}
       />
 
-      <main style={{ backgroundColor: "#FDFAF6", padding: "80px 28px" }}>
+      <main style={{ backgroundColor: "var(--color-cream)", padding: "80px 28px" }}>
         <div style={{ maxWidth: 1280, margin: "0 auto" }}>
           <span className="sec-label">STAFF</span>
-          <h2 style={{ fontSize: "clamp(18px, 2.4vw, 26px)", fontWeight: 700, color: "#2D2D2D", marginBottom: 40, lineHeight: 1.5 }}>スタッフ一同でお待ちしています</h2>
+          <h2 style={{ fontSize: "clamp(18px, 2.4vw, 26px)", fontWeight: 700, color: "var(--color-text)", marginBottom: 40, lineHeight: 1.5 }}>スタッフ一同でお待ちしています</h2>
 
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 28 }} className="grid-3">
             {c.staff.map(s => (
@@ -31,9 +31,9 @@ export default function StaffPage() {
                   <img src={s.image} alt={s.name} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top", display: "block" }} />
                 </div>
                 <div style={{ padding: "22px 20px" }}>
-                  <div style={{ fontSize: 17, fontWeight: 700, color: "#2D2D2D", marginBottom: 4 }}>{s.name}</div>
-                  <div style={{ fontSize: 12, color: "#888", marginBottom: 14, lineHeight: 1.6 }}>{s.profile}</div>
-                  <p style={{ fontSize: 14, color: "#4A4A4A", lineHeight: 2.0 }}>{s.message}</p>
+                  <div style={{ fontSize: 17, fontWeight: 700, color: "var(--color-text)", marginBottom: 4 }}>{s.name}</div>
+                  <div style={{ fontSize: 12, color: "var(--color-text-light)", marginBottom: 14, lineHeight: 1.6 }}>{s.profile}</div>
+                  <p style={{ fontSize: 14, color: "var(--color-text-body)", lineHeight: 2.0 }}>{s.message}</p>
                 </div>
               </div>
             ))}

@@ -1,90 +1,101 @@
-export interface SiteContent {
-  meta: {
-    title: string;
-    description: string;
-    siteUrl: string;
-  };
-  clinic: {
-    name: string;
-    nameEn: string;
-    branch: string;
-    address: string;
-    tel: string;
-    telFormatted: string;
-    hours: { label: string; time: string }[];
-    access: string[];
-    parking: string;
-    insurance: string;
-    mapUrl: string;
-  };
-  hero: {
-    catchcopy: string;
-    subcopy: string;
-    lead: string;
-    image: string;
-  };
-  features: {
-    num: string;
-    title: string;
-    desc: string;
-  }[];
-  about: {
-    heading: string;
-    body: string[];
-    director: {
-      name: string;
-      role: string;
-      qualifications: string[];
-      hobbies: string[];
-      image: string;
-    };
-    infoCards: { title: string; desc: string }[];
-  };
-  symptoms: {
-    slug: string;
-    name: string;
-    nameEn: string;
-    desc: string;
-    lead: string;
-    treatment: string;
-    image: string;
-    videos?: string[];
-    cases: { who: string; text: string }[];
-  }[];
-  flow: {
-    n: string;
-    title: string;
-    desc: string;
-    image: string;
-  }[];
-  voices: {
-    tag: string;
-    title: string;
-    text: string;
-    who: string;
-  }[];
-  staff: {
-    name: string;
-    profile: string;
-    message: string;
-    image: string;
-  }[];
-  pricing: {
-    insurance: { label: string; col1: string; col2: string }[];
-    extras: { label: string; price: string }[];
-    insuranceTypes: { title: string; desc: string }[];
-  };
-  images: {
-    exterior: string;
-    interior: string;
-    parking: string;
-  };
-}
+import { z } from "zod";
+
+const HoursSchema = z.object({
+  label: z.string(),
+  time: z.string(),
+});
+
+const ClinicSchema = z.object({
+  name: z.string(),
+  nameEn: z.string(),
+  branch: z.string(),
+  address: z.string(),
+  tel: z.string(),
+  telFormatted: z.string(),
+  hours: z.array(HoursSchema),
+  access: z.array(z.string()),
+  parking: z.string(),
+  insurance: z.string(),
+  mapUrl: z.string(),
+});
+
+const SymptomSchema = z.object({
+  slug: z.string(),
+  name: z.string(),
+  nameEn: z.string(),
+  desc: z.string(),
+  lead: z.string(),
+  treatment: z.string(),
+  image: z.string(),
+  videos: z.array(z.string()).optional(),
+  cases: z.array(z.object({ who: z.string(), text: z.string() })),
+});
+
+const SiteContentSchema = z.object({
+  meta: z.object({
+    title: z.string(),
+    description: z.string(),
+    siteUrl: z.string(),
+  }),
+  clinic: ClinicSchema,
+  hero: z.object({
+    catchcopy: z.string(),
+    subcopy: z.string(),
+    lead: z.string(),
+    image: z.string(),
+  }),
+  features: z.array(z.object({
+    num: z.string(),
+    title: z.string(),
+    desc: z.string(),
+  })),
+  about: z.object({
+    heading: z.string(),
+    body: z.array(z.string()),
+    director: z.object({
+      name: z.string(),
+      role: z.string(),
+      qualifications: z.array(z.string()),
+      hobbies: z.array(z.string()),
+      image: z.string(),
+    }),
+    infoCards: z.array(z.object({ title: z.string(), desc: z.string() })),
+  }),
+  symptoms: z.array(SymptomSchema),
+  flow: z.array(z.object({
+    n: z.string(),
+    title: z.string(),
+    desc: z.string(),
+    image: z.string(),
+  })),
+  voices: z.array(z.object({
+    tag: z.string(),
+    title: z.string(),
+    text: z.string(),
+    who: z.string(),
+  })),
+  staff: z.array(z.object({
+    name: z.string(),
+    profile: z.string(),
+    message: z.string(),
+    image: z.string(),
+  })),
+  pricing: z.object({
+    insurance: z.array(z.object({ label: z.string(), col1: z.string(), col2: z.string() })),
+    extras: z.array(z.object({ label: z.string(), price: z.string() })),
+    insuranceTypes: z.array(z.object({ title: z.string(), desc: z.string() })),
+  }),
+  images: z.object({
+    exterior: z.string(),
+    interior: z.string(),
+    parking: z.string(),
+  }),
+});
+
+// SiteContent 型は Zod スキーマから自動導出 — インターフェース定義との二重管理なし
+export type SiteContent = z.infer<typeof SiteContentSchema>;
 
 // content.json は .gitignore 対象でクライアントごとに用意する。
-// require() は any を返すため TypeScript は構造を検証しない。
-// unknown 経由の明示キャストにすることで「意図的な信頼」を一箇所に集約する。
-// 厳密な検証が必要な場合は zod を追加: z.object({...}).parse(raw)
+// parse() が失敗した場合は build 時に Zod のエラーメッセージで原因を特定できる。
 // eslint-disable-next-line @typescript-eslint/no-require-imports
-const _raw: unknown = require("../content.json");
-export const siteContent = _raw as SiteContent;
+export const siteContent: SiteContent = SiteContentSchema.parse(require("../content.json"));

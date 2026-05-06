@@ -15,19 +15,19 @@ export default function About({ about }: Props) {
           </div>
           <div>
             <span className="sec-label">院長ご挨拶</span>
-            <h2 style={{ fontSize: "clamp(20px, 2.6vw, 28px)", fontWeight: 700, color: "#2D2D2D", marginBottom: 8, lineHeight: 1.5 }}>
+            <h2 style={{ fontSize: "clamp(20px, 2.6vw, 28px)", fontWeight: 700, color: "var(--color-text)", marginBottom: 8, lineHeight: 1.5 }}>
               {about.heading}
             </h2>
-            <div style={{ width: 36, height: 3, backgroundColor: "#D96B0B", borderRadius: 2, marginBottom: 28 }} />
+            <div style={{ width: 36, height: 3, backgroundColor: "var(--color-primary)", borderRadius: 2, marginBottom: 28 }} />
             {about.body.map((p, i) => (
-              <p key={i} style={{ fontSize: 15, color: "#4A4A4A", lineHeight: 2.2, marginBottom: 18 }}>{p}</p>
+              <p key={i} style={{ fontSize: 15, color: "var(--color-text-body)", lineHeight: 2.2, marginBottom: 18 }}>{p}</p>
             ))}
-            <div style={{ backgroundColor: "#FEF3E8", border: "1px solid #F5DCC2", borderRadius: 10, padding: "20px 24px", display: "flex", alignItems: "flex-start", gap: 16 }}>
-              <div style={{ width: 4, minHeight: 44, backgroundColor: "#D96B0B", borderRadius: 2, flexShrink: 0, marginTop: 2 }} />
+            <div style={{ backgroundColor: "var(--color-primary-light)", border: "1px solid var(--color-primary-border)", borderRadius: 10, padding: "20px 24px", display: "flex", alignItems: "flex-start", gap: 16 }}>
+              <div style={{ width: 4, minHeight: 44, backgroundColor: "var(--color-primary)", borderRadius: 2, flexShrink: 0, marginTop: 2 }} />
               <div>
-                <div style={{ fontSize: 17, fontWeight: 700, color: "#2D2D2D", marginBottom: 3 }}>{d.name}</div>
-                <div style={{ fontSize: 12, color: "#D96B0B", marginBottom: 6 }}>{d.role}</div>
-                <div style={{ fontSize: 12, color: "#888", lineHeight: 1.7 }}>{d.qualifications.join(" / ")}</div>
+                <div style={{ fontSize: 17, fontWeight: 700, color: "var(--color-text)", marginBottom: 3 }}>{d.name}</div>
+                <div style={{ fontSize: 12, color: "var(--color-primary)", marginBottom: 6 }}>{d.role}</div>
+                <div style={{ fontSize: 12, color: "var(--color-text-light)", lineHeight: 1.7 }}>{d.qualifications.join(" / ")}</div>
               </div>
             </div>
           </div>

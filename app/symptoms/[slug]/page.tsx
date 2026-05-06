@@ -34,18 +34,18 @@ export default async function SymptomPage({ params }: { params: Promise<{ slug: 
         ]}
       />
 
-      <main style={{ backgroundColor: "#FDFAF6", padding: "80px 28px" }}>
+      <main style={{ backgroundColor: "var(--color-cream)", padding: "80px 28px" }}>
         <div style={{ maxWidth: 1280, margin: "0 auto" }}>
 
           {/* 概要 */}
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 56, alignItems: "start", marginBottom: 72 }} className="grid-2">
             <div>
               <span className="sec-label">概要</span>
-              <h2 style={{ fontSize: "clamp(18px, 2.4vw, 26px)", fontWeight: 700, color: "#2D2D2D", marginBottom: 20, lineHeight: 1.5 }}>{s.name}について</h2>
-              <p style={{ fontSize: 15, color: "#4A4A4A", lineHeight: 2.2, marginBottom: 24 }}>{s.lead}</p>
+              <h2 style={{ fontSize: "clamp(18px, 2.4vw, 26px)", fontWeight: 700, color: "var(--color-text)", marginBottom: 20, lineHeight: 1.5 }}>{s.name}について</h2>
+              <p style={{ fontSize: 15, color: "var(--color-text-body)", lineHeight: 2.2, marginBottom: 24 }}>{s.lead}</p>
               <div style={{ backgroundColor: "var(--color-green-light)", border: "1px solid var(--color-green-border)", borderRadius: 10, padding: "20px 24px" }}>
                 <div style={{ fontSize: 12, color: "var(--color-green)", fontWeight: 700, marginBottom: 10, letterSpacing: "0.06em" }}>当院の施術方針</div>
-                <p style={{ fontSize: 15, color: "#2D2D2D", lineHeight: 2.0 }}>{s.treatment}</p>
+                <p style={{ fontSize: 15, color: "var(--color-text)", lineHeight: 2.0 }}>{s.treatment}</p>
               </div>
             </div>
             <div style={{ borderRadius: 10, overflow: "hidden", boxShadow: "0 4px 16px rgba(0,0,0,0.08)" }}>
@@ -57,7 +57,7 @@ export default async function SymptomPage({ params }: { params: Promise<{ slug: 
           {s.videos && s.videos.length > 0 && (
             <div style={{ marginBottom: 72 }}>
               <span className="sec-label">施術動画</span>
-              <h2 style={{ fontSize: "clamp(18px, 2.4vw, 26px)", fontWeight: 700, color: "#2D2D2D", marginBottom: 28, lineHeight: 1.5 }}>施術の様子</h2>
+              <h2 style={{ fontSize: "clamp(18px, 2.4vw, 26px)", fontWeight: 700, color: "var(--color-text)", marginBottom: 28, lineHeight: 1.5 }}>施術の様子</h2>
               <div style={{ display: "grid", gridTemplateColumns: s.videos.length === 1 ? "1fr" : "1fr 1fr", gap: 20, maxWidth: s.videos.length === 1 ? 640 : "100%" }} className={s.videos.length > 1 ? "grid-2" : ""}>
                 {s.videos.map(id => (
                   <div key={id} style={{ position: "relative", paddingBottom: "56.25%", height: 0, borderRadius: 10, overflow: "hidden", boxShadow: "0 4px 16px rgba(0,0,0,0.08)" }}>
@@ -79,11 +79,11 @@ export default async function SymptomPage({ params }: { params: Promise<{ slug: 
           {s.cases.length > 0 && (
             <div style={{ marginBottom: 64 }}>
               <span className="sec-label">患者様の声</span>
-              <h2 style={{ fontSize: "clamp(18px, 2.4vw, 26px)", fontWeight: 700, color: "#2D2D2D", marginBottom: 28, lineHeight: 1.5 }}>来院された方のお声</h2>
+              <h2 style={{ fontSize: "clamp(18px, 2.4vw, 26px)", fontWeight: 700, color: "var(--color-text)", marginBottom: 28, lineHeight: 1.5 }}>来院された方のお声</h2>
               <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16 }} className="grid-3">
                 {s.cases.map((cs, i) => (
                   <div key={i} style={{ backgroundColor: "#fff", border: "1px solid var(--color-border)", borderRadius: 10, padding: "24px 20px" }}>
-                    <p style={{ fontSize: 14, color: "#4A4A4A", lineHeight: 2.1, marginBottom: 16 }}>{cs.text}</p>
+                    <p style={{ fontSize: 14, color: "var(--color-text-body)", lineHeight: 2.1, marginBottom: 16 }}>{cs.text}</p>
                     <div style={{ fontSize: 13, color: "var(--color-green)", fontWeight: 700, borderTop: "1px solid var(--color-border)", paddingTop: 12 }}>{cs.who}</div>
                   </div>
                 ))}
@@ -95,13 +95,13 @@ export default async function SymptomPage({ params }: { params: Promise<{ slug: 
           <div style={{ backgroundColor: "var(--color-primary-light)", border: "1px solid var(--color-primary-border)", borderRadius: 10, padding: "36px 32px", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 20 }}>
             <div>
               <div style={{ fontSize: 12, color: "var(--color-green)", fontWeight: 700, marginBottom: 6 }}>予約不要・当日来院OK</div>
-              <div style={{ fontSize: 18, fontWeight: 700, color: "#2D2D2D" }}>お気軽にご来院ください</div>
+              <div style={{ fontSize: 18, fontWeight: 700, color: "var(--color-text)" }}>お気軽にご来院ください</div>
             </div>
             <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
               <a href={`tel:${c.clinic.tel}`} style={{ display: "inline-flex", alignItems: "center", gap: 8, backgroundColor: "var(--color-primary)", color: "#fff", padding: "14px 28px", borderRadius: 6, textDecoration: "none", fontSize: 16, fontWeight: 700 }}>
                 {c.clinic.telFormatted}
               </a>
-              <Link href="/access/" style={{ display: "inline-flex", alignItems: "center", gap: 8, border: "1.5px solid var(--color-border)", color: "#4A4A4A", padding: "13px 22px", borderRadius: 6, textDecoration: "none", fontSize: 14, fontWeight: 600, backgroundColor: "#fff" }}>
+              <Link href="/access/" style={{ display: "inline-flex", alignItems: "center", gap: 8, border: "1.5px solid var(--color-border)", color: "var(--color-text-body)", padding: "13px 22px", borderRadius: 6, textDecoration: "none", fontSize: 14, fontWeight: 600, backgroundColor: "#fff" }}>
                 アクセスを見る
               </Link>
             </div>
